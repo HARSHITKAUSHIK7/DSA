@@ -32,7 +32,7 @@ public static void main(String[] args) throws Exception {
 
         }
         else if(ch=='+'||ch=='-'||ch=='*'||ch=='/'){
-            while(oprts.size()>0&&oprts.peek()!='('&&
+            while(oprts.size()>0&&opnds.size()>0&&oprts.peek()!='('&&
              precedence(ch)<=precedence(oprts.peek())){
                   char opr=oprts.pop();
                 int v1=opnds.pop();
@@ -46,10 +46,22 @@ public static void main(String[] args) throws Exception {
         else{
 
         }
-
-
     }
-    System.out.println(opnds.peek());
+        while(oprts.size() !=0){
+             char opr=oprts.pop();
+                int v1=opnds.pop();
+                int v2=opnds.pop();
+                int res=operationperform(v2,v1,opr);
+                opnds.push(res);
+
+        }
+
+
+    
+    System.out.println(opnds.pop());
+     //System.out.println(oprts.peek());
+//System.out.println(opnds.pop());
+     
 
     
  }
